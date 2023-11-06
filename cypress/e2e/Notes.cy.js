@@ -17,7 +17,6 @@ describe('Test suite for Notes app', () => {
         cy.get("button[type='submit']").should('exist')
         cy.get("button[type='delete']").should('not.exist')
 
-
     })
     it("add empty with enter", () => {
         cy.get('#text-input').click().type('{enter}')
@@ -31,11 +30,15 @@ describe('Test suite for Notes app', () => {
         
     })
     it("add text using submit button", () => {
-        cy.get('#text-input').click().type('textDivelement{enter}')
-        cy.get('#text-input').click().type('textDivelement2{enter}')
+        cy.get('#text-input').click().type('textDivelement')
+        cy.get("button[type='submit']").click()
+        cy.get('#text-input').click().type('textDivelement2')
+        cy.get("button[type='submit']").click()
         cy.get('.note-container').should('exist')
+        cy.get('.list-container ul div:nth-child(1) li').should('have.have.text',"textDivelement")
         cy.get('.list-container ul div:nth-child(2) li').should('have.have.text',"textDivelement2")
-        cy.get('.list-container ul div').should('have.class','note-container')
+        cy.get("div .note-container button").should('have.length',2)
+
     })
 
     it("test the delete button with 1 element", () => {
