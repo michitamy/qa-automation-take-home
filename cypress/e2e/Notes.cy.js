@@ -13,7 +13,7 @@ describe('Test suite for Notes app', () => {
         })
     })
 
-    it('The page is loading correctly',()=>
+    it('Test page is loading correctly',()=>
     {
         cy.get('h2').should('have.text','QA Automation Cypress Test')
         cy.get('.list-container ul').should('have.length',1)
