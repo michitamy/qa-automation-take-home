@@ -55,5 +55,4 @@ describe('Test suite for Notes app', () => {
         cy.get('.list-container ul div').should('have.length',1)
         
     })
-
 })
